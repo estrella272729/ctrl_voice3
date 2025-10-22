@@ -8,7 +8,7 @@ from PIL import Image
 # ==========================
 # CONFIGURACIÓN DE PÁGINA
 # ==========================
-st.set_page_config(page_title="Emma - Asistente de Notas", page_icon="🎧", layout="centered")
+st.set_page_config(page_title="Audio a texto: Emma - Asistente de Notas", page_icon="🎧", layout="centered")
 
 # ==========================
 # ESTILOS
@@ -27,11 +27,14 @@ st.markdown("""
             color: #4B4B4B;
         }
         .note-box {
-            background-color: #F4F3FF;
-            padding: 15px;
+            background-color: #EDEBFF;
+            padding: 20px;
             border-radius: 12px;
-            border-left: 5px solid #6C63FF;
-            margin-top: 20px;
+            border-left: 6px solid #6C63FF;
+            margin-top: 25px;
+            color: #000000; /* texto negro */
+            font-size: 18px;
+            line-height: 1.6;
         }
         .footer {
             text-align: center;
@@ -45,12 +48,12 @@ st.markdown("""
 # ==========================
 # CABECERA E IMAGEN
 # ==========================
-st.markdown("<div class='title'>🎓 Emma - Tu Asistente de Clase</div>", unsafe_allow_html=True)
+st.markdown("<div class='title'>Audio a texto: Emma - Tu Asistente de Clase</div>", unsafe_allow_html=True)
 st.markdown("<div class='subtitle'>Convierte tu voz en texto y toma notas fácilmente 📝</div>", unsafe_allow_html=True)
 
 # Imagen decorativa (puedes cambiarla)
 image = Image.open("emma_voice.jpg")  # o "voice_ctrl.jpg"
-st.image(image, width=250, caption="Tu compañera para tomar apuntes por voz 🎙️")
+st.image(image, width=250, caption="Tu compañera para tomar apuntes por voz ")
 
 st.divider()
 
@@ -58,7 +61,7 @@ st.divider()
 # BOTÓN DE RECONOCIMIENTO DE VOZ
 # ==========================
 st.markdown("### 🎤 Habla con Emma")
-st.write("Haz clic en el botón y comienza a hablar. Emma transcribirá lo que digas en texto en tiempo real 👇")
+st.write("Haz clic en el botón y comienza a hablar. Emma transcribirá lo que digas en texto en tiempo real ")
 
 stt_button = Button(label="🎙️ Iniciar grabación", width=220, button_type="success")
 
@@ -99,7 +102,5 @@ if result:
     if "GET_TEXT" in result:
         transcribed_text = result.get("GET_TEXT")
         st.markdown(f"<div class='note-box'>🗒️ <b>Transcripción:</b><br>{transcribed_text}</div>", unsafe_allow_html=True)
-
-st.markdown("<div class='footer'>Hecho con 💜 por Emma — Asistente de notas de clase</div>", unsafe_allow_html=True)
 
 
